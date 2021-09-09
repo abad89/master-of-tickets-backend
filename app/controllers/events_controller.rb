@@ -29,6 +29,14 @@ class EventsController < ApplicationController
         render json: {}
     end
 
+    #POST event/:id/buy
+    def buy
+        user = User.find_by(id: session[:user_id])
+        event = find_event
+        ticket = Ticket.create(user_id: user.id, event_id: event.id)
+        render json: ticket, status: :created
+    end
+
     private
 
     def event_params
