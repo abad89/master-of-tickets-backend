@@ -8,4 +8,26 @@ class UsersController < ApplicationController
         user = User.find_by(id: params[:id])
         render json: user
     end
+
+    def create
+        user = User.create(user_params)
+        render json: user, status: :created
+    end
+
+    # def destroy
+    #     user = User.find_by(id: params[:id])
+    #     if user
+    #         user.destroy
+    #         render json: {}
+    #     else
+    #         render json: { error: "User not found" }, status: :not_found
+    #     end
+    # end
+
+
+    private
+
+    def user_params
+        params.permit(:username)
+    end
 end
