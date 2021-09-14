@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   resources :events
   resources :users, only: [:index, :show, :create, :destroy] do
     resources :events, only: [:index, :show]
+    resources :tickets, only: [:index, :show]
+  end
+  resources :tickets do
+    resources :users, only: [:show, :index]
+    resources :events, only: [:show, :index]
   end
 
   # post "/login", to: "sessions#create"
