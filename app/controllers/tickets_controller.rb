@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
 
     def create
         ticket = Ticket.create(ticket_params)
-         render json: ticket, status: :created
+        render json: ticket, status: :created
     end
 
     def index
