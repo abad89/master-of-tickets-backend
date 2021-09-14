@@ -3,7 +3,12 @@ class EventsController < ApplicationController
 
 
     def index
-        events = Event.all
+        if params[:user_id]
+            user=User.find(params[:user_id])
+            events=user.events
+        else
+            events = Event.all
+        end
         render json: events
     end
 

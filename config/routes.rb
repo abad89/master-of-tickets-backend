@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :events
-  resources :users, only: [:index, :show, :create, :destroy]
+  resources :users, only: [:index, :show, :create, :destroy] do
+    resources :events, only: [:index, :show]
+  end
 
   # post "/login", to: "sessions#create"
   # get "/me", to: "sessions#show"
