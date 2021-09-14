@@ -9,10 +9,11 @@ class TicketsController < ApplicationController
         if params[:user_id]
             user=User.find(params[:user_id])
             tickets=user.tickets
+            render json: tickets, include: :event
         else
             tickets = Ticket.all
+            render json: tickets
         end
-        render json: tickets
     end
 
     def show
