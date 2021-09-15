@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     def destroy
         event = find_event
         event.destroy
-        render json: {}
+        render json: event
     end
 
     #POST event/:id/buy
